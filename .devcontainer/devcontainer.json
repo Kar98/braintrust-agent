@@ -1,0 +1,31 @@
+{
+  "name": "ADK Development",
+  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.13"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/dhoeric/features/google-cloud-cli:1": {},
+    "ghcr.io/jsburckhardt/devcontainer-features/just:1": {},
+    "ghcr.io/devcontainer-community/devcontainer-features/astral.sh-uv:1": {}
+  },
+  "containerEnv": {
+    // These environment variables configure only the `gcloud` CLI interface
+    "CLOUDSDK_CORE_PROJECT": "kablamo-labs-sandbox",
+    "CLOUDSDK_COMPUTE_ZONE": "us-central1"
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.config/gcloud,target=/home/vscode/.config/gcloud,type=bind"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "tamasfe.even-better-toml",
+        "astral-sh.ty"
+      ]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+[project]
+name = "py-bootstrap-genai-adk"
+version = "0.1.0"
+description = "Opinionated bootstrap for Agentic AI using Google's ADK"
+readme = "README.md"
+requires-python = "~=3.13.0"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "ruff>=0.8",
+]
+
+[tool.uv.workspace]
+members = ["agents"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+    "ALL", # include all the rules, including new ones
+]
+
+ignore = [
+    "D100", "D101", "D103", "D104", "D105", "D106", # docstrings are optional
+    "S101", # asserts are allowed in test files
+    "D203", # enforce blank line before class definitions
+    "D213", # enforce formatting of docstrings if present
+    "COM812", # formatter will take care of this
+    "TD002", "TD003", "FIX002" # allow todo notes
+]
+
+[tool.ruff.lint.per-file-ignores]
+"test_*.py" = [
+    "ANN001", "ANN201", "ANN202", # type hinting in tests is stupid
+    "D102", # don't need docstrings on test class methods
+]
+
+[tool.ty]
+# Ty automatically infers Python version from requires-python

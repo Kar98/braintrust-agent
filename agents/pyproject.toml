@@ -1,0 +1,9 @@
+[project]
+name = "agents"
+version = "0.1.0"
+description = "ADK agents"
+requires-python = "~=3.13.0"
+dependencies = [
+    "google-adk>=1.19.0",
+    "pydantic>=2.12.5",
+]

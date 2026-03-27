@@ -1,0 +1,17 @@
+services:
+  adk:
+    image: ghcr.io/astral-sh/uv:python3.13-bookworm-slim
+    working_dir: /app/agents
+    command: ["uv", "run", "--package", "agents", "adk", "web", "--host", "0.0.0.0", "--port", "8000", "--reload_agents"]
+    ports:
+      - 8000:8000
+    environment:
+      - UV_COMPILE_BYTECODE=1
+      - UV_NO_INSTALLER_METADATA=1
+      - UV_LINK_MODE=copy
+      - GOOGLE_GENAI_USE_VERTEXAI=1
+      - GOOGLE_CLOUD_PROJECT=kablamo-labs-sandbox
+      - GOOGLE_CLOUD_LOCATION=us-central1
+    volumes:
+      - .:/app
+      - ${GOOGLE_APPLICATION_CREDENTIALS:-${HOME}/.config/gcloud}:/root/.config/gcloud:ro
