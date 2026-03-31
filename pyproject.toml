@@ -4,12 +4,13 @@ version = "0.1.0"
 description = "Opinionated bootstrap for Agentic AI using Google's ADK"
 readme = "README.md"
 requires-python = "~=3.13.0"
-dependencies = []
+dependencies = [
+    "anthropic[vertex]",
+    "braintrust",
+]
 
 [dependency-groups]
-dev = [
-    "ruff>=0.8",
-]
+dev = ["ruff>=0.8"]
 
 [tool.uv.workspace]
 members = ["agents"]
@@ -24,18 +25,27 @@ select = [
 ]
 
 ignore = [
-    "D100", "D101", "D103", "D104", "D105", "D106", # docstrings are optional
-    "S101", # asserts are allowed in test files
-    "D203", # enforce blank line before class definitions
-    "D213", # enforce formatting of docstrings if present
+    "D100",
+    "D101",
+    "D103",
+    "D104",
+    "D105",
+    "D106",   # docstrings are optional
+    "S101",   # asserts are allowed in test files
+    "D203",   # enforce blank line before class definitions
+    "D213",   # enforce formatting of docstrings if present
     "COM812", # formatter will take care of this
-    "TD002", "TD003", "FIX002" # allow todo notes
+    "TD002",
+    "TD003",
+    "FIX002", # allow todo notes
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "test_*.py" = [
-    "ANN001", "ANN201", "ANN202", # type hinting in tests is stupid
-    "D102", # don't need docstrings on test class methods
+    "ANN001",
+    "ANN201",
+    "ANN202", # type hinting in tests is stupid
+    "D102",   # don't need docstrings on test class methods
 ]
 
 [tool.ty]
