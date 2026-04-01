@@ -1,7 +1,3 @@
-import os
-
-os.environ["BRAINTRUST_API_KEY"] = "sk-U3C0dUxSVMmCGmZOaMP987lofGcabI38WZ7hN1zoAI8Vxy0c"
-
 import braintrust
 from braintrust.wrappers.google_genai import setup_genai
 from google.genai import types
