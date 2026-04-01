@@ -21,14 +21,11 @@ with braintrust.start_span("rc-test"):
                 role="user",
                 parts=[
                     types.Part(
-                        text="Come up with a list of at least 3 words that a cup can be made from. Then choose one of the words randomly from the list and return it."
+                        text="Come up with a list of at least 5 words that a cup can be made from. Then choose one of the words randomly from the list. Return a single word"
                     )
                 ],
             )
         ],
-        config=types.GenerateContentConfig(
-            max_output_tokens=100,
-        ),
     )
     print(response.text)
     if response.parts:
